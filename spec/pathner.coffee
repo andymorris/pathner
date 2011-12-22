@@ -54,14 +54,16 @@ describe "Pathner", ->
   describe ".ellipticalArc", ->
     it "generates the correct string", ->
       expect(p.ellipticalArc(1,2,3,1,0,6,7)._parts[0]).toEqual "A1,2,3,1,0,6,7"
+    it "converts flag params to 1 and 0", ->
+      expect(p.ellipticalArc(1,2,3,true,false,6,7)._parts[0]).toEqual "A1,2,3,1,0,6,7"
 
   describe ".catmullRomTo", ->
     it "generates the correct string", ->
       expect(p.catmullRomTo(1,2,3,4)._parts[0]).toEqual "R1,2,3,4"
 
-  skip = ["constructor", "toString", "path"]
+  skip = ["constructor", "toString", "path", "_push"]
   for name, member of Pathner.prototype
-    if typeof(member) is "function" and not _(skip).include name
+    if _.isFunction(member) and not _(skip).include name
       describe ".#{name}", ->
         it "returns the Pathner", ->
           expect(p[name]()).toEqual p

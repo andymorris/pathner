@@ -64,8 +64,11 @@
       });
     });
     describe(".ellipticalArc", function() {
-      return it("generates the correct string", function() {
+      it("generates the correct string", function() {
         return expect(p.ellipticalArc(1, 2, 3, 1, 0, 6, 7)._parts[0]).toEqual("A1,2,3,1,0,6,7");
+      });
+      return it("converts flag params to 1 and 0", function() {
+        return expect(p.ellipticalArc(1, 2, 3, true, false, 6, 7)._parts[0]).toEqual("A1,2,3,1,0,6,7");
       });
     });
     describe(".catmullRomTo", function() {
@@ -73,12 +76,12 @@
         return expect(p.catmullRomTo(1, 2, 3, 4)._parts[0]).toEqual("R1,2,3,4");
       });
     });
-    skip = ["constructor", "toString", "path"];
+    skip = ["constructor", "toString", "path", "_push"];
     _ref = Pathner.prototype;
     _results = [];
     for (name in _ref) {
       member = _ref[name];
-      _results.push(typeof member === "function" && !_(skip).include(name) ? describe("." + name, function() {
+      _results.push(_.isFunction(member) && !_(skip).include(name) ? describe("." + name, function() {
         it("returns the Pathner", function() {
           return expect(p[name]()).toEqual(p);
         });

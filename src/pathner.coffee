@@ -40,7 +40,7 @@ class @Pathner
     @_push "T#{x},#{y}"
 
   ellipticalArc: (rx, ry, xAxisRotation, largeArcFlag, sweepFlag, x, y) ->
-    @_push "A#{rx},#{ry},#{xAxisRotation},#{largeArcFlag},#{sweepFlag},#{x},#{y}"
+    @_push "A#{rx},#{ry},#{xAxisRotation},#{if largeArcFlag then 1 else 0},#{if sweepFlag then 1 else 0},#{x},#{y}"
 
   catmullRomTo: (x1, y1, x, y) ->
     @_push "R#{x1},#{y1},#{x},#{y}"
