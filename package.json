@@ -1,0 +1,25 @@
+{
+  "name": "pathner",
+  "version": "1.0.0",
+  "description": "Make your SVG path generation code readable. 60% of the time, it works every time.",
+  "main": "src/pathner.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andymorris/pathner.git"
+  },
+  "keywords": [
+    "svg"
+  ],
+  "author": "Andy Morris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andymorris/pathner/issues"
+  },
+  "homepage": "https://github.com/andymorris/pathner#readme",
+  "devDependencies": {
+    "jasmine": "^2.5.2"
+  }
+}
